@@ -8,15 +8,119 @@
   </head>
 
   <body>
+
     <div class="container">
         <section class="pt-5 pb-5">
         <div class="row w-100">
           <div class="col-lg-12 col-md-12 col-12">
             <h3 class="display-5 mb-2 text-center">Product List</h3>
-    <input class="btn primary" type="button" id="allProducts" value="All Product">
-    <input class="btn primary" type="button" value="Add Product">
-    <input class="btn primary" type="button" value="Edit Product">
-    
+    <input class="btn btn-primary" type="button" id="allProducts" value="All Product">
+    <!-- <input class="btn primary" type="button" value="Add Product"> -->
+
+<!-- Button modal: Add Product -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">
+  Add Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="addProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addProductLabel">Add Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+<!--Product Name-->
+<label for="productName">Product Name:</label><br>
+<input type="text" id="productName" name="productName"><br>
+<br>
+
+<!--Quantity-->
+
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" name="quantity" min="1" max="100" step="1">
+<br>
+<!--Price-->
+
+<label for="phone">Price:</label>
+<input type="number" id="price" name="price" step="0.01">
+<br>
+
+<!--Product image-->
+<label for="productImage">Choose a product image:</label>
+<input type="file"
+       id="productImage" name="productImage"
+       accept="image/png, image/jpeg">
+
+<input id="submit" type="submit" value="Submit">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="addProductButton">Save changes</button> <!--This is submit button to fire up PostMapping-->
+      </div>
+    </div>
+  </div>
+</div>
+
+   
+<!-- Button modal: Edit Product -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProduct">
+  Edit Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+
+ <!--Product Id-->
+
+<label for="id">Id:</label>
+<input type="number" id="id" name="id" min="1" step="1">
+<br>
+
+<!--Product Name-->
+<label for="productName">Product Name:</label><br>
+<input type="text" id="productName" name="productName"><br>
+<br>
+
+<!--Quantity-->
+
+<label for="quantity">Quantity:</label>
+<input type="number" id="quantity" name="quantity" min="1" max="100" step="1">
+<br>
+<!--Price-->
+
+<label for="phone">Price:</label>
+<input type="number" id="price" name="price" step="0.01">
+<br>
+
+<!--Product image-->
+<label for="productImage">Choose a product image:</label>
+<input type="file"
+       id="productImage" name="productImage"
+       accept="image/png, image/jpeg">
+
+<input id="submit" type="submit" value="Submit">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button> <!--This is submit button to fire up PutMapping-->
+      </div>
+    </div>
+  </div>
+</div>
 
     <table class="table table-condensed table-responsive">
 
