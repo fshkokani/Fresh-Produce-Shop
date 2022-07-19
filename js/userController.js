@@ -21,12 +21,12 @@ const addUserToDatabaseRequest = async (firstName, lastName, email, password) =>
     if(!response.ok){
         throw new Error(`There is an error with status ${response.status}`)
     }
-    let itemsJson = response.json();
-    return itemsJson;
+    let usersJson = response.json();
+    console.log(usersJson)
+    return usersJson;
 }
 
-const addUser = async (event) =>{
-    event.preventDefault();
+const addUser = async () =>{
     url="http://localhost:8080/api/user/signup";
     let user = await addUserToDatabaseRequest(signupForm.FirstName.value, signupForm.LastName.value, signupForm.email.value, signupForm.password.value);
 }
