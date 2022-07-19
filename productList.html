@@ -31,7 +31,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-
+<form id="addProductForm">
 <!--Product Name-->
 <label for="productName">Product Name:</label><br>
 <input type="text" id="productName" name="productName"><br>
@@ -54,12 +54,12 @@
        id="productImage" name="productImage"
        accept="image/png, image/jpeg">
 
-<input id="submit" type="submit" value="Submit">
 
+<input type="submit" value="Submit" id="addProductButton"><!--This is submit button to fire up PostMapping-->
+</form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="addProductButton">Save changes</button> <!--This is submit button to fire up PostMapping-->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeAdd">Close</button>
       </div>
     </div>
   </div>
@@ -82,6 +82,7 @@
       <div class="modal-body">
 
 
+        <form id="editProductForm">
 
  <!--Product Id-->
 
@@ -110,17 +111,50 @@
 <input type="file"
        id="productImage" name="productImage"
        accept="image/png, image/jpeg">
-
-<input id="submit" type="submit" value="Submit">
-
+<br>
+<input type="submit" value="Submit" id="editProductButton"><!--This is submit button to fire up PutMapping-->
+        </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button> <!--This is submit button to fire up PutMapping-->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="clodeEdit">Close</button>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Button modal: Delete Product -->
+<button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProduct">
+  Delete Product
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteProduct" >
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="deleteModalLabel">Delete Product</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="deleteProductForm">
+
+ <!--Product Id-->
+
+<label for="id">Id:</label>
+<input type="number" id="id" name="id" min="1" step="1">
+<br>
+
+<input type="submit" value="Submit" id="deleteProductButton"><!--This is submit button to fire up DeleteMapping-->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete">Close</button> <!--This Button will refresh the page-->
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
     <table class="table table-condensed table-responsive">
 
@@ -133,6 +167,8 @@
             <th scope="col">Quantity</th>
             <th scope="col">Price</th>
             <th scope="col"></th>
+
+
           </tr>
         </thead>
         <tbody>
