@@ -33,6 +33,7 @@ const signUp = async (event) =>{
     event.preventDefault();
     url="http://localhost:8080/api/user/signup";
     let user = await signUpRequest(signupForm.FirstName.value, signupForm.LastName.value, signupForm.email.value, signupForm.password.value);
+    let storedUserId=localStorage.setItem("user_id", JSON.stringify(user.id));
 }
 
 const signInRequest = async () => {
@@ -49,6 +50,7 @@ const signIn = async(event) =>{
 event.preventDefault();
     url=`http://localhost:8080/api/user/signin?email=${signinForm.email.value}&password=${signinForm.password.value}`;
     let user = await signInRequest();
+    let storedUserId=localStorage.setItem("user_id", JSON.stringify(user.id));
 }
 
 if (signupButton != null){

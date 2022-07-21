@@ -65,7 +65,7 @@ items.forEach(element => {
     <li class="list-group-item">$${element.price} per pound</li>
   </ul>
   <div class="input-group mb-3">
-    <input type="number" max="10" min="0" class="form-control" placeholder="Quantity" aria-label="Quantity" aria-describedby="button-addon1">
+    <input type="number" max="10" min="1" class="form-control" placeholder="Quantity" aria-label="Quantity" aria-describedby="button-addon1">
     <button class="addToCartButtons" class="btn btn-warning" type="button" id="${element.id}">Add</button>
 
 </div>
@@ -79,17 +79,27 @@ items.forEach(element => {
 }
 
 let addToCartRequest = async () => {
-  let response = await fetch(url);
+  let response = await fetch(url,
+
+    {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json',
+      }
+      });
+
   // if the response is bad
   if(!response.ok){
       throw new Error(`There is an error with status ${response.status}`)
   }
   let itemsJson = response.json();
+  console.log(itemsJson);
   return itemsJson;
 }
-const addToCart = async()=>{
-  console.log('hello')
-  url= "http://localhost:8080/api/item/cart";
+const addToCart = async(itemId)=>{
+let storedUserId=localStorage.getItem('user')
+let userId=JSON.parse(storedUserId);
+  url= `http://localhost:8080/api/cart/add?item_id=${itemId}&user_id=${userId}&quantity=1`;
   let cartItems = await addToCartRequest();
 }
 
@@ -100,9 +110,9 @@ window.addEventListener('load', loadProductsFromDatabase);
 document.addEventListener('click', function(e)
 {
    if(e.target.className == "addToCartButtons"){
-    console.log(e.target.className)
-    let param=e.target.id;
-    addToCart();
+    let itemId=e.target.id;
+    addToCart(itemId);
+
    }
-    
   });
+
