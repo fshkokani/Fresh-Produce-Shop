@@ -70,8 +70,6 @@ let eventHandlerFunc = (event)=>{
     newProduct.addProduct(myForm.productName.value, myForm.productDescription.value, myForm.quantity.value, myForm.price.value, myForm.productImage.value);
     let storedProduct=localStorage.setItem("products", JSON.stringify(newProduct.products));
     save(myForm.productName.value, myForm.quantity.value, myForm.productImage.value, myForm.price.value );
-    console.log(newProduct);
-    // console.log(newProduct.products)
     return storedProduct;
 };
 
